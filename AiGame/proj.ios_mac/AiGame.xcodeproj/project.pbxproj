@@ -66,6 +66,7 @@
 		84C2109C1A4BED9700AF4070 /* Vector2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210981A4BED9700AF4070 /* Vector2d.cpp */; };
 		84C210A11A4BF1A700AF4070 /* CityScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C2109F1A4BF1A700AF4070 /* CityScene.cpp */; };
 		84C210A51A4BF24100AF4070 /* BaseGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */; };
+		84C210AD1A4C1BEA00AF4070 /* MovingEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -174,6 +175,9 @@
 		84C210A01A4BF1A700AF4070 /* CityScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityScene.h; path = GameClass/Scenes/CityScene.h; sourceTree = "<group>"; };
 		84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseGameEntity.cpp; sourceTree = "<group>"; };
 		84C210A41A4BF24100AF4070 /* BaseGameEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGameEntity.h; sourceTree = "<group>"; };
+		84C210A91A4BF42A00AF4070 /* Telegram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telegram.h; sourceTree = "<group>"; };
+		84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingEntity.cpp; sourceTree = "<group>"; };
+		84C210AC1A4C1BEA00AF4070 /* MovingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingEntity.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -391,6 +395,7 @@
 		84C210921A4BED9700AF4070 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				84C210A61A4BF42A00AF4070 /* Messaging */,
 				84C210931A4BED9700AF4070 /* 2D */,
 			);
 			path = Common;
@@ -401,9 +406,9 @@
 			children = (
 				84C2109D1A4BEE3F00AF4070 /* utils.h */,
 				84C210941A4BED9700AF4070 /* C2DMatrix.h */,
+				84C210971A4BED9700AF4070 /* Transformations.h */,
 				84C210951A4BED9700AF4070 /* geometry.h */,
 				84C210961A4BED9700AF4070 /* InvertedAABBox2D.h */,
-				84C210971A4BED9700AF4070 /* Transformations.h */,
 				84C210981A4BED9700AF4070 /* Vector2d.cpp */,
 				84C210991A4BED9700AF4070 /* Vector2D.h */,
 				84C2109A1A4BED9700AF4070 /* Wall2D.h */,
@@ -426,9 +431,19 @@
 			children = (
 				84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */,
 				84C210A41A4BF24100AF4070 /* BaseGameEntity.h */,
+				84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */,
+				84C210AC1A4C1BEA00AF4070 /* MovingEntity.h */,
 			);
 			name = ModelClass;
 			path = GameClass/ModelClass;
+			sourceTree = "<group>";
+		};
+		84C210A61A4BF42A00AF4070 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				84C210A91A4BF42A00AF4070 /* Telegram.h */,
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,6 +601,7 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				84C2108E1A4BCA6C00AF4070 /* GameConfig.cpp in Sources */,
+				84C210AD1A4C1BEA00AF4070 /* MovingEntity.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				84C2109C1A4BED9700AF4070 /* Vector2d.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

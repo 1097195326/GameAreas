@@ -9,9 +9,9 @@
 //Author: Mat Buckland (fup@ai-junkie.com)
 //
 //------------------------------------------------------------------------
-#include "misc/utils.h"
-#include "2d/Vector2D.h"
-#include "2d/C2DMatrix.h"
+#include "utils.h"
+#include "Vector2D.h"
+#include "C2DMatrix.h"
 #include "Transformations.h"
 
 #include <math.h>
@@ -588,8 +588,8 @@ inline bool GetLineSegmentCircleClosestIntersectionPoint(Vector2D A,
 
   //move the circle into the local space defined by the vector B-A with origin
   //at A
-  Vector2D LocalPos = PointToLocalSpace(pos, toBNorm, toBNorm.Perp(), A);
-
+//  Vector2D LocalPos = PointToLocalSpace(pos, toBNorm, toBNorm.Perp(), A);
+    Vector2D LocalPos = PointToWorldSpace(pos, toBNorm, toBNorm.Perp(), A);
   bool ipFound = false;
 
   //if the local position + the radius is negative then the circle lays behind
