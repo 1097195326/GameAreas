@@ -22,7 +22,7 @@ protected:
     double              m_dMass;
     double              m_dMaxSpeed;
     double              m_dMaxForce;
-    double              m_dMaxTrunRate;
+    double              m_dMaxTurnRate;
 public:
     MovingEntity(Vector2D   position,
                  double     radius,
@@ -40,7 +40,7 @@ public:
                 m_dMass(mass),
                 m_vSide(m_vHeading.Perp()),
                 m_dMaxSpeed(max_speed),
-                m_dMaxTrunRate(turn_rate),
+                m_dMaxTurnRate(turn_rate),
                 m_dMaxForce(max_force)
     {
         m_vScale = scale;
@@ -67,7 +67,37 @@ public:
     double              SpeedSq()const{return m_vVelocity.LengthSq();}
     
     Vector2D            Heading()const{return m_vHeading;}
+    void                SetHeading(Vector2D new_heading);
+    bool                RotateHeadingToFacePosition(Vector2D target);
+    
+    double              MaxTurnRate()const{return m_dMaxTurnRate;}
+    void                SetMaxTurnRate(double val){m_dMaxTurnRate = val;}
     
 };
-
+inline bool MovingEntity::RotateHeadingToFacePosition(Vector2D target)
+{
+    Vector2D toTarget = Vec2DNormalize(target - m_vPos);
+    
+    double angle = acos(m_vHeading.Dot(toTarget));
+    if (angle < 0.00001) return true;
+    
+    if (angle > m_dMaxTurnRate) angle = m_dMaxTurnRate;
+    
+    C2DMatrix RotationMatrix;
+    
+    RotationMatrix.Rotate(angle * m_vHeading.Sign(toTarget));
+    RotationMatrix.TransformVector2Ds(m_vHeading);
+    RotationMatrix.TransformVector2Ds(m_vVelocity);
+    
+    m_vSide = m_vHeading.Perp();
+    
+    return false;
+}
+inline void MovingEntity::SetHeading(Vector2D new_heading)
+{
+    assert( (new_heading.LengthSq() - 1.0) < 0.00001);
+    
+    m_vHeading = new_heading;
+    m_vSide = m_vHeading.Perp();
+}
 #endif /* defined(__AiGame__MovingEntity__) */

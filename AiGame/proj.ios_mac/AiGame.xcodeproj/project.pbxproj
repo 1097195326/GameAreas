@@ -65,8 +65,9 @@
 		84C2108E1A4BCA6C00AF4070 /* GameConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C2108C1A4BCA6C00AF4070 /* GameConfig.cpp */; };
 		84C2109C1A4BED9700AF4070 /* Vector2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210981A4BED9700AF4070 /* Vector2d.cpp */; };
 		84C210A11A4BF1A700AF4070 /* CityScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C2109F1A4BF1A700AF4070 /* CityScene.cpp */; };
-		84C210A51A4BF24100AF4070 /* BaseGameEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */; };
-		84C210AD1A4C1BEA00AF4070 /* MovingEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */; };
+		84C8FE521A4D12EC004D176C /* Vehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C8FE501A4D12EC004D176C /* Vehicle.cpp */; };
+		84C8FE551A4D48AB004D176C /* SteeringBehaviors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C8FE531A4D48AB004D176C /* SteeringBehaviors.cpp */; };
+		84C8FE581A4D48CF004D176C /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84C8FE561A4D48CF004D176C /* GameWorld.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -173,11 +174,15 @@
 		84C2109D1A4BEE3F00AF4070 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		84C2109F1A4BF1A700AF4070 /* CityScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CityScene.cpp; path = GameClass/Scenes/CityScene.cpp; sourceTree = "<group>"; };
 		84C210A01A4BF1A700AF4070 /* CityScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityScene.h; path = GameClass/Scenes/CityScene.h; sourceTree = "<group>"; };
-		84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseGameEntity.cpp; sourceTree = "<group>"; };
 		84C210A41A4BF24100AF4070 /* BaseGameEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGameEntity.h; sourceTree = "<group>"; };
 		84C210A91A4BF42A00AF4070 /* Telegram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telegram.h; sourceTree = "<group>"; };
-		84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingEntity.cpp; sourceTree = "<group>"; };
 		84C210AC1A4C1BEA00AF4070 /* MovingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingEntity.h; sourceTree = "<group>"; };
+		84C8FE501A4D12EC004D176C /* Vehicle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vehicle.cpp; sourceTree = "<group>"; };
+		84C8FE511A4D12EC004D176C /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		84C8FE531A4D48AB004D176C /* SteeringBehaviors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SteeringBehaviors.cpp; sourceTree = "<group>"; };
+		84C8FE541A4D48AB004D176C /* SteeringBehaviors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SteeringBehaviors.h; sourceTree = "<group>"; };
+		84C8FE561A4D48CF004D176C /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
+		84C8FE571A4D48CF004D176C /* GameWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWorld.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -429,10 +434,14 @@
 		84C210A21A4BF20400AF4070 /* ModelClass */ = {
 			isa = PBXGroup;
 			children = (
-				84C210A31A4BF24100AF4070 /* BaseGameEntity.cpp */,
 				84C210A41A4BF24100AF4070 /* BaseGameEntity.h */,
-				84C210AB1A4C1BEA00AF4070 /* MovingEntity.cpp */,
 				84C210AC1A4C1BEA00AF4070 /* MovingEntity.h */,
+				84C8FE501A4D12EC004D176C /* Vehicle.cpp */,
+				84C8FE511A4D12EC004D176C /* Vehicle.h */,
+				84C8FE531A4D48AB004D176C /* SteeringBehaviors.cpp */,
+				84C8FE541A4D48AB004D176C /* SteeringBehaviors.h */,
+				84C8FE561A4D48CF004D176C /* GameWorld.cpp */,
+				84C8FE571A4D48CF004D176C /* GameWorld.h */,
 			);
 			name = ModelClass;
 			path = GameClass/ModelClass;
@@ -596,15 +605,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C210A11A4BF1A700AF4070 /* CityScene.cpp in Sources */,
-				84C210A51A4BF24100AF4070 /* BaseGameEntity.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				84C8FE551A4D48AB004D176C /* SteeringBehaviors.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				84C2108E1A4BCA6C00AF4070 /* GameConfig.cpp in Sources */,
-				84C210AD1A4C1BEA00AF4070 /* MovingEntity.cpp in Sources */,
+				84C8FE581A4D48CF004D176C /* GameWorld.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				84C2109C1A4BED9700AF4070 /* Vector2d.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				84C8FE521A4D12EC004D176C /* Vehicle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
