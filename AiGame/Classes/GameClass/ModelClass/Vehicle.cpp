@@ -30,11 +30,11 @@ Vehicle::Vehicle(GameWorld * world,
                 m_dTimeElapsed(0.0)
 
 {
-    m_pSteering = new SteeringBehavior(this);
+//    m_pSteering = new SteeringBehavior(this);
 }
 Vehicle::~Vehicle()
 {
-    delete m_pSteering;
+//    delete m_pSteering;
 }
 void Vehicle::Update(double time_elapsed)
 {
@@ -44,7 +44,7 @@ void Vehicle::Update(double time_elapsed)
     
     Vector2D SteeringForce;
     
-    SteeringForce = m_pSteering->Calculate();
+//    SteeringForce = m_pSteering->Calculate();
     Vector2D acceleration = SteeringForce / m_dMass;
     m_vVelocity += acceleration * time_elapsed;
     m_vVelocity.Truncate(m_dMaxSpeed);
