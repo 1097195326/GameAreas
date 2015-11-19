@@ -8,15 +8,29 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
-
-@end
+//@interface AppDelegate ()
+//
+//@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    m_window = [[UIWindow alloc]initWithFrame:screenBounds];
+    m_view   = [[GLView alloc]initWithFrame:screenBounds];
+    
+    m_viewController = [[ViewController alloc]initWithNibName:nil bundle:nil];
+    
+    [m_viewController setView:m_view];
+    
+    [m_window setRootViewController:m_viewController];
+    
+    [m_window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -41,5 +55,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+- (void)dealloc
+{
+//    [m_window dealloc];
+//    [m_view dealloc];
+    
+}
 @end

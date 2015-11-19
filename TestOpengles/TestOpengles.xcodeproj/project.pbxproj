@@ -7,16 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */; };
+		8D548C511BFC6679004FF1CD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C501BFC6679004FF1CD /* OpenGLES.framework */; };
+		8D548C531BFC6683004FF1CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C521BFC6683004FF1CD /* Foundation.framework */; };
+		8D548C551BFC668B004FF1CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C541BFC668B004FF1CD /* UIKit.framework */; };
+		8D548C571BFC6696004FF1CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C561BFC6696004FF1CD /* CoreGraphics.framework */; };
+		8D59C1861BFDB21B004FC7B2 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D59C1851BFDB21B004FC7B2 /* GLView.mm */; };
 		D8290D281BF22A8E00CAF9C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8290D271BF22A8E00CAF9C0 /* main.m */; };
-		D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.m */; };
+		D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */; };
 		D8290D2E1BF22A8E00CAF9C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8D548C501BFC6679004FF1CD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8D548C521BFC6683004FF1CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8D548C541BFC668B004FF1CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8D548C561BFC6696004FF1CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8D59C1841BFDB21B004FC7B2 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		8D59C1851BFDB21B004FC7B2 /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLView.mm; sourceTree = "<group>"; };
 		D8290D231BF22A8E00CAF9C0 /* TestOpengles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOpengles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8290D271BF22A8E00CAF9C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D8290D371BF22A8E00CAF9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,16 +40,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D548C571BFC6696004FF1CD /* CoreGraphics.framework in Frameworks */,
+				8D548C551BFC668B004FF1CD /* UIKit.framework in Frameworks */,
+				8D548C531BFC6683004FF1CD /* Foundation.framework in Frameworks */,
+				8D548C511BFC6679004FF1CD /* OpenGLES.framework in Frameworks */,
+				8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D548C4D1BFC6651004FF1CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D548C561BFC6696004FF1CD /* CoreGraphics.framework */,
+				8D548C541BFC668B004FF1CD /* UIKit.framework */,
+				8D548C521BFC6683004FF1CD /* Foundation.framework */,
+				8D548C501BFC6679004FF1CD /* OpenGLES.framework */,
+				8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D548C581BFC66A9004FF1CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D8290D1A1BF22A8E00CAF9C0 = {
 			isa = PBXGroup;
 			children = (
 				D8290D251BF22A8E00CAF9C0 /* TestOpengles */,
+				8D548C581BFC66A9004FF1CD /* Resources */,
+				8D548C4D1BFC6651004FF1CD /* Frameworks */,
 				D8290D241BF22A8E00CAF9C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,10 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */,
-				D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.m */,
+				D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */,
+				8D59C1841BFDB21B004FC7B2 /* GLView.h */,
+				8D59C1851BFDB21B004FC7B2 /* GLView.mm */,
 				D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */,
 				D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */,
-				D8290D371BF22A8E00CAF9C0 /* Info.plist */,
 				D8290D261BF22A8E00CAF9C0 /* Supporting Files */,
 			);
 			path = TestOpengles;
@@ -65,6 +105,7 @@
 		D8290D261BF22A8E00CAF9C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D8290D371BF22A8E00CAF9C0 /* Info.plist */,
 				D8290D271BF22A8E00CAF9C0 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,7 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8290D2E1BF22A8E00CAF9C0 /* ViewController.m in Sources */,
-				D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.m in Sources */,
+				8D59C1861BFDB21B004FC7B2 /* GLView.mm in Sources */,
+				D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */,
 				D8290D281BF22A8E00CAF9C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
