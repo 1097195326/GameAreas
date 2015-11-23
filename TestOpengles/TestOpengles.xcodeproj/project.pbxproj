@@ -16,6 +16,7 @@
 		D8290D281BF22A8E00CAF9C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8290D271BF22A8E00CAF9C0 /* main.m */; };
 		D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */; };
 		D8290D2E1BF22A8E00CAF9C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */; };
+		D844A96A1BFE045A00696565 /* RenderingEngine2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D844A9691BFE045A00696565 /* RenderingEngine2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D8290D371BF22A8E00CAF9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D844A9681BFE027800696565 /* IRenderingEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRenderingEngine.h; sourceTree = "<group>"; };
+		D844A9691BFE045A00696565 /* RenderingEngine2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingEngine2.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				D8290D251BF22A8E00CAF9C0 /* TestOpengles */,
+				D8290D261BF22A8E00CAF9C0 /* Supporting Files */,
 				8D548C581BFC66A9004FF1CD /* Resources */,
 				8D548C4D1BFC6651004FF1CD /* Frameworks */,
 				D8290D241BF22A8E00CAF9C0 /* Products */,
@@ -91,13 +95,14 @@
 		D8290D251BF22A8E00CAF9C0 /* TestOpengles */ = {
 			isa = PBXGroup;
 			children = (
+				D844A9681BFE027800696565 /* IRenderingEngine.h */,
 				D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */,
 				D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */,
 				8D59C1841BFDB21B004FC7B2 /* GLView.h */,
 				8D59C1851BFDB21B004FC7B2 /* GLView.mm */,
 				D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */,
 				D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */,
-				D8290D261BF22A8E00CAF9C0 /* Supporting Files */,
+				D844A9691BFE045A00696565 /* RenderingEngine2.cpp */,
 			);
 			path = TestOpengles;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				D8290D271BF22A8E00CAF9C0 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = TestOpengles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +188,7 @@
 				8D59C1861BFDB21B004FC7B2 /* GLView.mm in Sources */,
 				D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */,
 				D8290D281BF22A8E00CAF9C0 /* main.m in Sources */,
+				D844A96A1BFE045A00696565 /* RenderingEngine2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
