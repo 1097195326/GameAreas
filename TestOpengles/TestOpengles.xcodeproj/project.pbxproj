@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7EB1C05B545000F4251 /* Simple.frag */; };
+		8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7ED1C05B559000F4251 /* Simple.vert */; };
 		8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */; };
 		8D548C511BFC6679004FF1CD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C501BFC6679004FF1CD /* OpenGLES.framework */; };
 		8D548C531BFC6683004FF1CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C521BFC6683004FF1CD /* Foundation.framework */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D4ED7EB1C05B545000F4251 /* Simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.frag; path = TestOpengles/Shaders/Simple.frag; sourceTree = "<group>"; };
+		8D4ED7ED1C05B559000F4251 /* Simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.vert; path = TestOpengles/Shaders/Simple.vert; sourceTree = "<group>"; };
 		8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D548C501BFC6679004FF1CD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8D548C521BFC6683004FF1CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -54,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D4ED7EA1C05B4E9000F4251 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				8D4ED7EB1C05B545000F4251 /* Simple.frag */,
+				8D4ED7ED1C05B559000F4251 /* Simple.vert */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
 		8D548C4D1BFC6651004FF1CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 		D8290D1A1BF22A8E00CAF9C0 = {
 			isa = PBXGroup;
 			children = (
+				8D4ED7EA1C05B4E9000F4251 /* Shaders */,
 				D8290D251BF22A8E00CAF9C0 /* TestOpengles */,
 				D8290D261BF22A8E00CAF9C0 /* Supporting Files */,
 				8D548C581BFC66A9004FF1CD /* Resources */,
@@ -96,13 +110,13 @@
 			isa = PBXGroup;
 			children = (
 				D844A9681BFE027800696565 /* IRenderingEngine.h */,
+				D844A9691BFE045A00696565 /* RenderingEngine2.cpp */,
 				D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */,
 				D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */,
 				8D59C1841BFDB21B004FC7B2 /* GLView.h */,
 				8D59C1851BFDB21B004FC7B2 /* GLView.mm */,
 				D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */,
 				D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */,
-				D844A9691BFE045A00696565 /* RenderingEngine2.cpp */,
 			);
 			path = TestOpengles;
 			sourceTree = "<group>";
@@ -174,6 +188,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */,
+				8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
