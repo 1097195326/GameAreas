@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "IRenderingEngine.h"
+
+
 @interface GLView : UIView
 {
 @private
     EAGLContext * m_context;
     float   m_timeStamp;
+    IRenderingEngine * renderingEngine;
     
 }
 - (void) drawView:(CADisplayLink *) displayLink;

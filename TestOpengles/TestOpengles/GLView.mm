@@ -7,6 +7,7 @@
 //
 
 #import "GLView.h"
+//#include "RenderingEngine2.cpp"
 
 
 @implementation GLView
@@ -21,6 +22,10 @@
     if (self = [super initWithFrame:frame])
     {
 //        NSLog(@"glview init frame");
+        renderingEngine = CreateRenderer2();
+        renderingEngine->initialize(frame.size.width, frame.size.height);
+        
+        
         CADisplayLink * displayLink = [CADisplayLink displayLinkWithTarget:self
                                                                   selector:@selector(drawView:)];
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -32,7 +37,8 @@
 - (void) drawView:(CADisplayLink *)displayLink
 {
 //    NSLog(@"draw view");
-    
+//    displayLink.timestamp;
+    renderingEngine->render();
     
 }
 

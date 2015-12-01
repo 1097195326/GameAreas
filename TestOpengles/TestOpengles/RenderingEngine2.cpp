@@ -11,6 +11,9 @@
 #include <OpenGLES/ES2/gl.h>
 //#include <OpenGLES/ES2/glext.h>
 
+#include "SocketClient.hpp"
+#include "SocketServer.hpp"
+
 
 class RenderingEngine2 : public IRenderingEngine
 {
@@ -27,6 +30,10 @@ private:
     GLuint  m_frameBuffer;
     GLuint  m_simpleProgram;
     
+    //
+    SocketClient * clientSocket;
+    SocketServer * serverSocket;
+    
 };
 IRenderingEngine * CreateRenderer2()
 {
@@ -39,10 +46,16 @@ RenderingEngine2::RenderingEngine2()
 }
 void RenderingEngine2::initialize(int width, int height)
 {
+//    socket(AF_INET, <#int#>, <#int#>)
+//    printf("while ----");
+    serverSocket = new SocketServer();
+    clientSocket = new SocketClient();
     
 }
 void RenderingEngine2::render()const
 {
+    serverSocket->run();
+    clientSocket->run();
     
 }
 void RenderingEngine2::updateAnimation(float timeStep)
