@@ -13,6 +13,7 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 #include <string>
 
@@ -22,15 +23,18 @@
 #define BUFFER_SIZE 1024
 #define SERVER_ADDRESS "127.0.0.1"
 
-SocketServer::SocketServer():m_socket_client(2)
+SocketServer::SocketServer():m_isAccept(false)
 {
     m_socket_server = socket(AF_INET, SOCK_STREAM, 0);
     if (m_socket_server < 0) {
         printf("create server socket faild");
         return;
     }
+    fcntl(m_socket_server, F_SETFL, O_NONBLOCK);
+    
     int opt = 1;
     setsockopt(m_socket_server, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    
     
     sockaddr_in serverAddr;
     bzero(&serverAddr, sizeof(serverAddr));
@@ -57,14 +61,21 @@ SocketServer::~SocketServer()
 }
 void SocketServer::run()
 {
-    if (m_socket_client == 2)
+    printf("222\n");
+    if (!m_isAccept)
     {
         sockaddr_in clientAddr ;
         socklen_t length = sizeof(clientAddr);
+        printf("server status:%d\n",m_socket_server);
         m_socket_client = accept(m_socket_server, (sockaddr*)&clientAddr, &length);
+        
+        printf("server status:%d\n",m_socket_server);
         if (m_socket_client < 0)
         {
             return;
+        }else
+        {
+            m_isAccept = true;
         }
     }
     char buffer[BUFFER_SIZE];
@@ -73,7 +84,7 @@ void SocketServer::run()
     long recvLength = recv(m_socket_client, buffer, BUFFER_SIZE, 0);
     if (recvLength < 0)
     {
-        printf("server recv faild");
+        printf("server recv faild\n");
         return;
     }
     char clientText[BUFFER_SIZE];
@@ -92,6 +103,6 @@ void SocketServer::run()
         printf("server send faild");
         return;
     }
-//    close(client_socket);
+//    close(m_socket_client);
     
 }

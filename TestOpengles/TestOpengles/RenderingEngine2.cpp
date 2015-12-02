@@ -69,20 +69,21 @@ RenderingEngine2::RenderingEngine2()
 void RenderingEngine2::initialize(int width, int height)
 {
 //    printf("while ----");
-//    serverSocket = new SocketServer();
+    serverSocket = new SocketServer();
 //    clientSocket = new SocketClient();
-    glGenFramebuffers(1, &m_frameBuffer);
-    glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
     
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER,
-                              GL_COLOR_ATTACHMENT0,
-                              GL_RENDERBUFFER,
-                              m_renderBuffer);
-    
-    glViewport(0, 0, width, height);
-    
-    m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
-    glUseProgram(m_simpleProgram);
+//    glGenFramebuffers(1, &m_frameBuffer);
+//    glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
+//    
+//    glFramebufferRenderbuffer(GL_FRAMEBUFFER,
+//                              GL_COLOR_ATTACHMENT0,
+//                              GL_RENDERBUFFER,
+//                              m_renderBuffer);
+//    
+//    glViewport(0, 0, width, height);
+//    
+//    m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
+//    glUseProgram(m_simpleProgram);
     
     
     
@@ -121,7 +122,7 @@ void RenderingEngine2::playRotation(float degrees)
 void RenderingEngine2::render()const
 {
     serverSocket->run();
-    clientSocket->run();
+//    clientSocket->run();
     
 }
 void RenderingEngine2::updateAnimation(float timeStep)

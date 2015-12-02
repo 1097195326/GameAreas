@@ -18,14 +18,15 @@
 #define BUFFER_SIZE 1024
 #define SERVER_ADDRESS "127.0.0.1"
 
-SocketClient::SocketClient()
+SocketClient::SocketClient():
+m_isConnect(false)
 {
-//    sockaddr_in client_addr;
-//    bzero(&client_addr, sizeof(client_addr));
-//    
-//    client_addr.sin_family = AF_INET;
-//    client_addr.sin_addr.s_addr = htons(INADDR_ANY);
-//    client_addr.sin_port = htons(0);
+    sockaddr_in client_addr;
+    bzero(&client_addr, sizeof(client_addr));
+    
+    client_addr.sin_family = AF_INET;
+    client_addr.sin_addr.s_addr = htons(INADDR_ANY);
+    client_addr.sin_port = htons(0);
     
     m_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (m_socket < 0)
@@ -33,11 +34,11 @@ SocketClient::SocketClient()
         printf("client create socket faild");
         return;
     }
-//    if (bind(m_socket, (sockaddr*)&client_addr, sizeof(client_addr)) < 0)
-//    {
-//        printf("client bind faild");
-//        return;
-//    }
+    if (bind(m_socket, (sockaddr*)&client_addr, sizeof(client_addr)) < 0)
+    {
+        printf("client bind faild");
+        return;
+    }
     
     sockaddr_in server_addr;
     server_addr.sin_family = AF_INET;
@@ -47,13 +48,17 @@ SocketClient::SocketClient()
     socklen_t serverAddr_len = sizeof(server_addr);
     if (connect(m_socket, (sockaddr*)&server_addr, serverAddr_len) < 0)
     {
-        printf("client connect server faild");
+        printf("client connect server faild\n");
+        
+    }else
+    {
+        m_isConnect = true;
+        char buffer[BUFFER_SIZE];
+        std::string str = "client 111222";
+        strncpy(buffer, str.c_str(), BUFFER_SIZE);
+        send(m_socket, buffer, BUFFER_SIZE, 0);
     }
-    char buffer[BUFFER_SIZE];
-    std::string str = "client 111";
-    strncpy(buffer, str.c_str(), BUFFER_SIZE);
     
-    send(m_socket, buffer, BUFFER_SIZE, 0);
     
 }
 SocketClient::~SocketClient()
@@ -62,23 +67,40 @@ SocketClient::~SocketClient()
 }
 void SocketClient::run()
 {
-    
-    char buffer[BUFFER_SIZE];
-    std::string str = "client 111";
-    strncpy(buffer, str.c_str(), BUFFER_SIZE);
-    send(m_socket, buffer, BUFFER_SIZE, 0);
-    
-    bzero(buffer, BUFFER_SIZE);
-    
-    long lenght = 0;
-    lenght = recv(m_socket, buffer, BUFFER_SIZE, 0);
-    if (lenght < 0) {
-        return;
+    if (m_isConnect) {
+        char buffer[BUFFER_SIZE];
+        std::string str = "client 111";
+        strncpy(buffer, str.c_str(), BUFFER_SIZE);
+        send(m_socket, buffer, BUFFER_SIZE, 0);
+    }else
+    {
+        sockaddr_in server_addr;
+        server_addr.sin_family = AF_INET;
+        server_addr.sin_addr.s_addr = inet_addr(SERVER_ADDRESS);
+        server_addr.sin_port = htons(SERVER_PORT);
+        
+        socklen_t serverAddr_len = sizeof(server_addr);
+        if (connect(m_socket, (sockaddr*)&server_addr, serverAddr_len) < 0)
+        {
+            printf("client connect server faild\n");
+        }else
+        {
+            m_isConnect = true;
+        }
     }
-    char recText[BUFFER_SIZE];
-    bzero(recText, BUFFER_SIZE);
-    strncpy(recText, buffer, BUFFER_SIZE);
     
-    printf("recv server text :%s\n",recText);
+    
+//    bzero(buffer, BUFFER_SIZE);
+//    
+//    long lenght = 0;
+//    lenght = recv(m_socket, buffer, BUFFER_SIZE, 0);
+//    if (lenght < 0) {
+//        return;
+//    }
+//    char recText[BUFFER_SIZE];
+//    bzero(recText, BUFFER_SIZE);
+//    strncpy(recText, buffer, BUFFER_SIZE);
+//    
+//    printf("recv server text :%s\n",recText);
     
 }

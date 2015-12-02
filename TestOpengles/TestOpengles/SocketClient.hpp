@@ -15,7 +15,8 @@
 
 class SocketClient {
 private:
-    int m_socket;
+    int     m_socket;
+    bool    m_isConnect;
 public:
     SocketClient();
     ~SocketClient();

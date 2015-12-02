@@ -15,6 +15,7 @@ class SocketServer {
 private:
     int m_socket_server;
     int m_socket_client;
+    bool    m_isAccept;
 public:
     SocketServer();
     ~SocketServer();
