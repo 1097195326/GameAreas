@@ -8,20 +8,21 @@
 
 #include "SocketServer.hpp"
 
+#include <sys/select.h>
 #include <sys/socket.h>
-#include <sys/types.h>
+//#include <sys/types.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
-
+#include <signal.h>
 #include <string>
-
+//#include <sys/time.h>
 
 #define SERVER_PORT 6666
 #define LENGTH_OF_LISTEN_QUEUE 20
 #define BUFFER_SIZE 1024
-#define SERVER_ADDRESS "127.0.0.1"
+#define SERVER_ADDRESS "192.168.1.110"
 
 SocketServer::SocketServer():m_isAccept(false)
 {
@@ -52,7 +53,9 @@ SocketServer::SocketServer():m_isAccept(false)
         printf("server listen faild ");
         return;
     }
+    printf("m_socket_server:%d\n",m_socket_server);
     
+   
     
 }
 SocketServer::~SocketServer()
@@ -61,23 +64,47 @@ SocketServer::~SocketServer()
 }
 void SocketServer::run()
 {
-    printf("222\n");
+    printf("=====\n");
+//    __DARWIN_FD_ZERO(&m_readFds);
+//    __DARWIN_FD_SET(m_socket_server, &m_readFds);
+//    
+//    
+//    timeval  time;
+//    time.tv_sec = 1;
+//    time.tv_usec = 0;
+//    int suc = select(m_socket_server + 1, &m_readFds, NULL, NULL, &time);
+//    if (suc == -1) {
+//        printf("server select faild\n");
+//        return;
+//    }else if(suc == 0)
+//    {
+//        printf("server select out time \n");
+//    }
     if (!m_isAccept)
+//    if (!__DARWIN_FD_ISSET(m_socket_server, &m_readFds))
+//    {
+//        printf("server is not set\n");
+//        return;
+//    }
     {
         sockaddr_in clientAddr ;
         socklen_t length = sizeof(clientAddr);
-        printf("server status:%d\n",m_socket_server);
+//        printf("server status:%d\n",m_socket_server);
         m_socket_client = accept(m_socket_server, (sockaddr*)&clientAddr, &length);
         
-        printf("server status:%d\n",m_socket_server);
+//        printf("server status:%d\n",m_socket_client);
         if (m_socket_client < 0)
         {
             return;
         }else
         {
+            printf("server accept success\n");
             m_isAccept = true;
         }
     }
+
+//    signal(int, void (*)(int))
+//    fork();
     char buffer[BUFFER_SIZE];
     bzero(buffer, BUFFER_SIZE);
     

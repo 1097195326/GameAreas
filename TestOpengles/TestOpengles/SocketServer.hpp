@@ -16,6 +16,7 @@ private:
     int m_socket_server;
     int m_socket_client;
     bool    m_isAccept;
+    fd_set  m_readFds;
 public:
     SocketServer();
     ~SocketServer();
