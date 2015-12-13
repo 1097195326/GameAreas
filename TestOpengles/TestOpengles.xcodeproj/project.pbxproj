@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D074A241C1D3FDF00180523 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D074A231C1D3FDF00180523 /* Default-568h@2x.png */; };
 		8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7EB1C05B545000F4251 /* Simple.frag */; };
 		8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7ED1C05B559000F4251 /* Simple.vert */; };
 		8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D074A231C1D3FDF00180523 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8D074A251C1D419B00180523 /* RenderingEngine2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderingEngine2.h; sourceTree = "<group>"; };
 		8D4ED7EB1C05B545000F4251 /* Simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.frag; path = TestOpengles/Shaders/Simple.frag; sourceTree = "<group>"; };
 		8D4ED7ED1C05B559000F4251 /* Simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.vert; path = TestOpengles/Shaders/Simple.vert; sourceTree = "<group>"; };
 		8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -64,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D074A2A1C1D84E600180523 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				8D58E88E1C0D795E001B3111 /* SocketServer.cpp */,
+				8D58E88F1C0D795E001B3111 /* SocketServer.hpp */,
+				8D58E8911C0D797B001B3111 /* SocketClient.cpp */,
+				8D58E8921C0D797B001B3111 /* SocketClient.hpp */,
+			);
+			name = socket;
+			sourceTree = "<group>";
+		};
 		8D4ED7EA1C05B4E9000F4251 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +109,7 @@
 		D8290D1A1BF22A8E00CAF9C0 = {
 			isa = PBXGroup;
 			children = (
+				8D074A231C1D3FDF00180523 /* Default-568h@2x.png */,
 				8D4ED7EA1C05B4E9000F4251 /* Shaders */,
 				D8290D251BF22A8E00CAF9C0 /* TestOpengles */,
 				D8290D261BF22A8E00CAF9C0 /* Supporting Files */,
@@ -115,7 +130,9 @@
 		D8290D251BF22A8E00CAF9C0 /* TestOpengles */ = {
 			isa = PBXGroup;
 			children = (
+				8D074A2A1C1D84E600180523 /* socket */,
 				D844A9681BFE027800696565 /* IRenderingEngine.h */,
+				8D074A251C1D419B00180523 /* RenderingEngine2.h */,
 				D844A9691BFE045A00696565 /* RenderingEngine2.cpp */,
 				D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */,
 				D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */,
@@ -123,10 +140,6 @@
 				8D59C1851BFDB21B004FC7B2 /* GLView.mm */,
 				D8290D2C1BF22A8E00CAF9C0 /* ViewController.h */,
 				D8290D2D1BF22A8E00CAF9C0 /* ViewController.m */,
-				8D58E88E1C0D795E001B3111 /* SocketServer.cpp */,
-				8D58E88F1C0D795E001B3111 /* SocketServer.hpp */,
-				8D58E8911C0D797B001B3111 /* SocketClient.cpp */,
-				8D58E8921C0D797B001B3111 /* SocketClient.hpp */,
 			);
 			path = TestOpengles;
 			sourceTree = "<group>";
@@ -201,6 +214,7 @@
 			files = (
 				8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */,
 				8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */,
+				8D074A241C1D3FDF00180523 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

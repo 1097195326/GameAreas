@@ -7,7 +7,8 @@
 //
 
 #import "GLView.h"
-//#include "RenderingEngine2.cpp"
+#include "RenderingEngine2.h"
+
 
 
 @implementation GLView
@@ -22,7 +23,22 @@
     if (self = [super initWithFrame:frame])
     {
 //        NSLog(@"glview init frame");
+        CAEAGLLayer * eaglLayer = (CAEAGLLayer *)super.layer;
+        eaglLayer.opaque = true;
+        
+        EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
+        m_context = [[EAGLContext alloc]initWithAPI:api];
+        
+        if (!m_context && ![EAGLContext setCurrentContext:m_context])
+        {
+            return nil;
+        }
+        
         renderingEngine = CreateRenderer2();
+        
+        [m_context renderbufferStorage:GL_RENDERBUFFER
+                          fromDrawable:eaglLayer];
+        
         renderingEngine->initialize(frame.size.width, frame.size.height);
         
         
@@ -38,8 +54,9 @@
 {
 //    NSLog(@"draw view");
 //    displayLink.timestamp;
-    renderingEngine->render();
     
+    renderingEngine->render();
+    [m_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
 @end

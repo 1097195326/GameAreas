@@ -6,43 +6,19 @@
 //  Copyright © 2015年 张洪星. All rights reserved.
 //
 
-#include "IRenderingEngine.h"
+#include "RenderingEngine2.h"
+
 #include <iostream>
-#include <OpenGLES/ES2/gl.h>
 #include <cmath>
-//#include <OpenGLES/ES2/glext.h>
+
 
 #define STRINGIFY(x) #x
 #include "Shaders/Simple.vert"
 #include "Shaders/Simple.frag"
 
-#include "SocketClient.hpp"
-#include "SocketServer.hpp"
+//#include "SocketClient.hpp"
+//#include "SocketServer.hpp"
 
-
-class RenderingEngine2 : public IRenderingEngine
-{
-public:
-    RenderingEngine2();
-    void    initialize(int width, int height);
-    void    render() const;
-    void    updateAnimation(float timeStep);
-    
-private:
-    void    playOrtho(float maxX, float maxY);
-    void    playRotation(float degrees);
-    
-    GLuint  buildShader(const char * source, GLenum type) const;
-    GLuint  buildProgram(const char * vShader, const char * fShader) const;
-    GLuint  m_renderBuffer;
-    GLuint  m_frameBuffer;
-    GLuint  m_simpleProgram;
-    
-    //
-    SocketClient * clientSocket;
-    SocketServer * serverSocket;
-    
-};
 IRenderingEngine * CreateRenderer2()
 {
     return new RenderingEngine2();
@@ -53,57 +29,60 @@ struct Vertex{
 };
 const Vertex Verteces[] =
 {
-    {{0.5,-0.8},{1,1,0.5,1}},
-    {{-0.5,-0.8},{1,1,0.5,1}},
-    {{0,1},{1,1,0.5,1}},
-    {{0.5,-0.8},{0.5,0.5,0.5}},
-    {{-0.5,-0.8},{0.5,0.5,0.5}},
-    {{0,-0.4},{0.5,0.5,0.5}},
+    {{0.5,-0.8},    {1,1,0.5f,1}},
+    {{-0.5,-0.8},   {1,1,0.5f,1}},
+    {{0,1},         {1,1,0.5f,1}},
+    {{0.5,-0.8},    {0.5f,0.5f,0.5f}},
+    {{-0.5,-0.8},   {0.5f,0.5f,0.5f}},
+    {{0,-0.4},      {0.5f,0.5f,0.5f}},
 };
 
 RenderingEngine2::RenderingEngine2()
 {
+    m_renderBuffer = GLuint(0);
+    m_frameBuffer = GLuint(0);
     glGenRenderbuffers(1, &m_renderBuffer);
+    
     glBindRenderbuffer(GL_RENDERBUFFER, m_renderBuffer);
 }
 void RenderingEngine2::initialize(int width, int height)
 {
 //    printf("while ----");
-    serverSocket = new SocketServer();
+//    serverSocket = new SocketServer();
 //    clientSocket = new SocketClient();
     
-//    glGenFramebuffers(1, &m_frameBuffer);
-//    glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
-//    
-//    glFramebufferRenderbuffer(GL_FRAMEBUFFER,
-//                              GL_COLOR_ATTACHMENT0,
-//                              GL_RENDERBUFFER,
-//                              m_renderBuffer);
-//    
-//    glViewport(0, 0, width, height);
-//    
-//    m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
-//    glUseProgram(m_simpleProgram);
+    glGenFramebuffers(1, &m_frameBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
     
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER,
+                              GL_COLOR_ATTACHMENT0,
+                              GL_RENDERBUFFER,
+                              m_renderBuffer);
     
+    glViewport(0, 0, width, height);
+    
+    m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
+    glUseProgram(m_simpleProgram);
+    
+    playOrtho(2, 3);
     
 }
-void RenderingEngine2::playOrtho(float maxX, float maxY)
+void RenderingEngine2::playOrtho(float maxX, float maxY)const
 {
     float a = 1.0f / maxX;
     float b = 1.0f / maxY;
     float ortho[16] =
     {
         a,  0,  0,  0,
-        0,  b,  1,  0,
+        0,  b,  0,  0,
         0,  0,  -1, 0,
         0,  0,  0,  1
     };
     GLint projectionUniform = glGetUniformLocation(m_simpleProgram, "Projection");
-    glUniformMatrix4fv(projectionUniform,1,0,ortho);
+    glUniformMatrix4fv(projectionUniform,1,0,&ortho[0]);
     
 }
-void RenderingEngine2::playRotation(float degrees)
+void RenderingEngine2::playRotation(float degrees)const
 {
     float radians = degrees * 3.14159f / 180.0f;
     float s = std::sin(radians);
@@ -112,17 +91,41 @@ void RenderingEngine2::playRotation(float degrees)
     float modelView[16] =
     {
         c,  s,  0,  0,
-        s,  c,  0,  0,
+        -s,  c,  0,  0,
         0,  0,  1,  0,
         0,  0,  0,  1
     };
     GLint modelViewUniform = glGetUniformLocation(m_simpleProgram, "ModelView");
-    glUniformMatrix4fv(modelViewUniform, 1, 0, modelView);
+    glUniformMatrix4fv(modelViewUniform, 1, 0, &modelView[0]);
 }
 void RenderingEngine2::render()const
 {
-    serverSocket->run();
+//    serverSocket->run();
 //    clientSocket->run();
+//    printf("run\n");
+    glClearColor(0.5f, 0.5f, 0.5f, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    playRotation(0.0f);
+    
+    GLuint position = glGetAttribLocation(m_simpleProgram, "Position");
+    GLuint color = glGetAttribLocation(m_simpleProgram, "SourceColor");
+    
+    glEnableVertexAttribArray(position);
+    glEnableVertexAttribArray(color);
+    
+    GLsizei stride = sizeof(Vertex);
+    const GLvoid * pCoords = &Verteces[0].Position[0];
+    const GLvoid * pColors = &Verteces[0].Color[0];
+    
+    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, pCoords);
+    glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, pColors);
+    
+    GLsizei vertexCount = sizeof(Verteces)/sizeof(Vertex);
+    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+    
+    glDisableVertexAttribArray(position);
+    glDisableVertexAttribArray(color);
     
 }
 void RenderingEngine2::updateAnimation(float timeStep)
