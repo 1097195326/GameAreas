@@ -29,12 +29,12 @@ struct Vertex{
 };
 const Vertex Verteces[] =
 {
-    {{0.5,-0.8},    {1,1,0.5f,1}},
-    {{-0.5,-0.8},   {1,1,0.5f,1}},
-    {{0,1},         {1,1,0.5f,1}},
-    {{0.5,-0.8},    {0.5f,0.5f,0.5f}},
-    {{-0.5,-0.8},   {0.5f,0.5f,0.5f}},
-    {{0,-0.4},      {0.5f,0.5f,0.5f}},
+    {{100,0},    {1,1,0.5f,1}},
+    {{-100,0},   {1,1,0.5f,1}},
+    {{0,320},         {1,1,0.5f,1}},
+    {{100,0},    {0.5f,0.5f,0.5f}},
+    {{-100,0},   {0.5f,0.5f,0.5f}},
+    {{0,0},      {0.5f,0.5f,0.5f}},
 };
 
 RenderingEngine2::RenderingEngine2()
@@ -58,6 +58,9 @@ void RenderingEngine2::initialize(int width, int height)
 //    serverSocket = new SocketServer();
 //    clientSocket = new SocketClient();
     
+    printf("width:%d\n",width);
+    printf("height:%d\n",height);
+    
     glGenFramebuffers(1, &m_frameBuffer);
     if (m_frameBuffer == GL_FALSE)
     {
@@ -79,7 +82,7 @@ void RenderingEngine2::initialize(int width, int height)
     m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
     glUseProgram(m_simpleProgram);
     
-    playOrtho(2, 3);
+    playOrtho(width, height);
     
 }
 void RenderingEngine2::playOrtho(float maxX, float maxY)const
