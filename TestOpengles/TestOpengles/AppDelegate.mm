@@ -7,12 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#include <OpenGLES/ES3/glext.h>
 
 //@interface AppDelegate ()
 //
 //@end
 
 @implementation AppDelegate
+
+@synthesize window = m_window;
+@synthesize m_view;
+@synthesize m_viewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -21,15 +26,16 @@
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     
     m_window = [[UIWindow alloc]initWithFrame:screenBounds];
-    m_view   = [[GLView alloc]initWithFrame:screenBounds];
+    
     
     m_viewController = [[ViewController alloc]initWithNibName:nil bundle:nil];
     
-    [m_viewController setView:m_view];
-    
     [m_window setRootViewController:m_viewController];
-    
     [m_window makeKeyAndVisible];
+    
+    m_view   = [[GLView alloc]initWithFrame:screenBounds];
+    [m_viewController setView:m_view];
+
     
     return YES;
 }

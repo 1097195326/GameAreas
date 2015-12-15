@@ -11,7 +11,7 @@
 #import "ViewController.h"
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate>
 {
 @private
     UIWindow    *   m_window;
@@ -20,7 +20,8 @@
     
 }
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic,retain) GLView  *   m_view;
+@property (nonatomic,retain) ViewController  *   m_viewController;
 
 @end
 

@@ -39,10 +39,17 @@ const Vertex Verteces[] =
 
 RenderingEngine2::RenderingEngine2()
 {
-    m_renderBuffer = GLuint(0);
-    m_frameBuffer = GLuint(0);
+//    m_renderBuffer;
+//    m_frameBuffer;
     glGenRenderbuffers(1, &m_renderBuffer);
-    
+    if (m_renderBuffer == GL_FALSE)
+    {
+        printf("m_renderBuffer faild :%d\n",m_renderBuffer);
+        return;
+    }else
+    {
+        printf("m_renderBuffer success:%d\n",m_renderBuffer);
+    }
     glBindRenderbuffer(GL_RENDERBUFFER, m_renderBuffer);
 }
 void RenderingEngine2::initialize(int width, int height)
@@ -52,6 +59,14 @@ void RenderingEngine2::initialize(int width, int height)
 //    clientSocket = new SocketClient();
     
     glGenFramebuffers(1, &m_frameBuffer);
+    if (m_frameBuffer == GL_FALSE)
+    {
+        printf("m_frameBuffer faild :%d\n",m_frameBuffer);
+        return;
+    }else
+    {
+        printf("m_frameBuffer success:%d\n",m_frameBuffer);
+    }
     glBindFramebuffer(GL_FRAMEBUFFER, m_frameBuffer);
     
     glFramebufferRenderbuffer(GL_FRAMEBUFFER,
@@ -135,6 +150,14 @@ void RenderingEngine2::updateAnimation(float timeStep)
 GLuint RenderingEngine2::buildShader(const char *source, GLenum type) const
 {
     GLuint shaderHandler = glCreateShader(type);
+    if (shaderHandler == GL_FALSE)
+    {
+        printf("shaderHandler faild :%d\n",shaderHandler);
+        return NULL;
+    }else
+    {
+        printf("shaderHandler success:%d\n",shaderHandler);
+    }
     glShaderSource(shaderHandler, 1, &source, 0);
     glCompileShader(shaderHandler);
     
