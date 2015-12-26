@@ -34,7 +34,6 @@
 //        {
 //            printf("render buffer success:%d\n",renderBuffer);
 //        }
-        
     
         
         CAEAGLLayer * eaglLayer = (CAEAGLLayer *)super.layer;

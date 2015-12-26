@@ -121,7 +121,7 @@ void RenderingEngine2::render()const
 //    serverSocket->run();
 //    clientSocket->run();
 //    printf("run\n");
-    glClearColor(0.5f, 0.5f, 0.5f, 1);
+    glClearColor(0.0f, 104.0/255.0, 55.0/255, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     
     playRotation(0.0f);
