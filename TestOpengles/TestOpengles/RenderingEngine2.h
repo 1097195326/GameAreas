@@ -22,15 +22,16 @@ public:
     void    updateAnimation(float timeStep);
     
 private:
-        void    playOrtho(float maxX, float maxY) const;
-        void    playRotation(float degrees) const;
-    
-        GLuint  buildShader(const char * source, GLenum type) const;
-        GLuint  buildProgram(const char * vShader, const char * fShader) const;
-        GLuint  m_renderBuffer;
-        GLuint  m_frameBuffer;
-        GLuint  m_simpleProgram;
-    
+    void    playOrtho(float maxX, float maxY) const;
+    void    playRotation(float degrees) const;
+
+    GLuint  buildShader(const char * source, GLenum type) const;
+    GLuint  buildProgram(const char * vShader, const char * fShader) const;
+    GLuint  m_renderBuffer;
+    GLuint  m_frameBuffer;
+    GLuint  m_simpleProgram;
+    GLuint  m_vertexBuffer;
+    GLuint  m_indexBuffer;
     //
     //    SocketClient * clientSocket;
     //    SocketServer * serverSocket;

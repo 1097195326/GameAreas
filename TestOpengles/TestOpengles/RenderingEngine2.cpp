@@ -29,13 +29,17 @@ struct Vertex{
 };
 const Vertex Verteces[] =
 {
-    {{100,0},    {1,1,0.5f,1}},
-    {{-100,0},   {1,1,0.5f,1}},
-    {{0,320},         {1,1,0.5f,1}},
-    {{100,0},    {0.5f,0.5f,0.5f}},
-    {{-100,0},   {0.5f,0.5f,0.5f}},
-    {{0,0},      {0.5f,0.5f,0.5f}},
+    {{100,0},    {1,0,0,1}},
+    {{100,80},   {0,1,0,1}},
+    {{-100,80},    {0,0,1,1}},
+    {{-100,0},   {0,0,0,1}},
 };
+const GLubyte Indices[] =
+{
+    0,1,2,
+    2,3,0
+};
+
 
 RenderingEngine2::RenderingEngine2()
 {
@@ -77,12 +81,60 @@ void RenderingEngine2::initialize(int width, int height)
                               GL_RENDERBUFFER,
                               m_renderBuffer);
     
+    glGenBuffers(1, &m_vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Verteces), Verteces, GL_STATIC_DRAW);
+    
+    glGenBuffers(1, &m_indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+    
     glViewport(0, 0, width, height);
+    
+    
     
     m_simpleProgram = buildProgram(SimpleVertexShader, SimpleFragmentShader);
     glUseProgram(m_simpleProgram);
     
     playOrtho(width, height);
+    
+}
+void RenderingEngine2::render()const
+{
+//    serverSocket->run();
+//    clientSocket->run();
+//    printf("run\n");
+    glClearColor(0.0f, 104.0/255.0, 55.0/255, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    playRotation(0.0f);
+    
+    GLuint position = glGetAttribLocation(m_simpleProgram, "Position");
+    GLuint color = glGetAttribLocation(m_simpleProgram, "SourceColor");
+    
+    glEnableVertexAttribArray(position);
+    glEnableVertexAttribArray(color);
+    
+    GLsizei stride = sizeof(Vertex);
+    const GLvoid * pCoords = &Verteces[0].Position[0];
+    const GLvoid * pColors = &Verteces[0].Color[0];
+    
+    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, pCoords);
+    glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, pColors);
+    
+    GLsizei vertexCount = sizeof(Indices)/sizeof(Indices[0]);
+    
+//    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+    glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_BYTE, &m_indexBuffer);
+    
+    glDisableVertexAttribArray(position);
+    glDisableVertexAttribArray(color);
+    
+}
+void RenderingEngine2::updateAnimation(float timeStep)
+{
     
 }
 void RenderingEngine2::playOrtho(float maxX, float maxY)const
@@ -115,40 +167,6 @@ void RenderingEngine2::playRotation(float degrees)const
     };
     GLint modelViewUniform = glGetUniformLocation(m_simpleProgram, "ModelView");
     glUniformMatrix4fv(modelViewUniform, 1, 0, &modelView[0]);
-}
-void RenderingEngine2::render()const
-{
-//    serverSocket->run();
-//    clientSocket->run();
-//    printf("run\n");
-    glClearColor(0.0f, 104.0/255.0, 55.0/255, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    playRotation(0.0f);
-    
-    GLuint position = glGetAttribLocation(m_simpleProgram, "Position");
-    GLuint color = glGetAttribLocation(m_simpleProgram, "SourceColor");
-    
-    glEnableVertexAttribArray(position);
-    glEnableVertexAttribArray(color);
-    
-    GLsizei stride = sizeof(Vertex);
-    const GLvoid * pCoords = &Verteces[0].Position[0];
-    const GLvoid * pColors = &Verteces[0].Color[0];
-    
-    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, pCoords);
-    glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, pColors);
-    
-    GLsizei vertexCount = sizeof(Verteces)/sizeof(Vertex);
-    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
-    
-    glDisableVertexAttribArray(position);
-    glDisableVertexAttribArray(color);
-    
-}
-void RenderingEngine2::updateAnimation(float timeStep)
-{
-    
 }
 GLuint RenderingEngine2::buildShader(const char *source, GLenum type) const
 {
