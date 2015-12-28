@@ -127,6 +127,7 @@ void RenderingEngine2::render()const
     
 //    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 //    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+    
     glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_BYTE, 0);
     
     glDisableVertexAttribArray(position);
