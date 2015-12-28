@@ -116,18 +116,18 @@ void RenderingEngine2::render()const
     glEnableVertexAttribArray(color);
     
     GLsizei stride = sizeof(Vertex);
-    const GLvoid * pCoords = &Verteces[0].Position[0];
-    const GLvoid * pColors = &Verteces[0].Color[0];
+//    const GLvoid * pCoords = &Verteces[0].Position[0];
+//    const GLvoid * pColors = &Verteces[0].Color[0];
     
-    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
-    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, pCoords);
-    glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, pColors);
+//    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+    glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, 0);
+    glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(sizeof(float) * 2));
     
     GLsizei vertexCount = sizeof(Indices)/sizeof(Indices[0]);
     
 //    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
-    glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_BYTE, &m_indexBuffer);
+//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+    glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_BYTE, 0);
     
     glDisableVertexAttribArray(position);
     glDisableVertexAttribArray(color);
