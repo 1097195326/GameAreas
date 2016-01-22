@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8D074A241C1D3FDF00180523 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D074A231C1D3FDF00180523 /* Default-568h@2x.png */; };
+		8D0ECE441C522B2400508B75 /* item_powerup_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D0ECE421C522B2400508B75 /* item_powerup_fish.png */; };
+		8D0ECE451C522B2400508B75 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D0ECE431C522B2400508B75 /* tile_floor.png */; };
 		8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7EB1C05B545000F4251 /* Simple.frag */; };
 		8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7ED1C05B559000F4251 /* Simple.vert */; };
 		8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		8D074A231C1D3FDF00180523 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8D074A251C1D419B00180523 /* RenderingEngine2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderingEngine2.h; sourceTree = "<group>"; };
+		8D0ECE421C522B2400508B75 /* item_powerup_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item_powerup_fish.png; sourceTree = "<group>"; };
+		8D0ECE431C522B2400508B75 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
 		8D4ED7EB1C05B545000F4251 /* Simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.frag; path = TestOpengles/Shaders/Simple.frag; sourceTree = "<group>"; };
 		8D4ED7ED1C05B559000F4251 /* Simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.vert; path = TestOpengles/Shaders/Simple.vert; sourceTree = "<group>"; };
 		8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -109,6 +113,8 @@
 		8D548C581BFC66A9004FF1CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D0ECE421C522B2400508B75 /* item_powerup_fish.png */,
+				8D0ECE431C522B2400508B75 /* tile_floor.png */,
 				8D5D1A581C229E08003A77E4 /* Grid16.png */,
 			);
 			name = Resources;
@@ -232,9 +238,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0ECE441C522B2400508B75 /* item_powerup_fish.png in Resources */,
 				8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */,
 				8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */,
 				8D5D1A591C229E08003A77E4 /* Grid16.png in Resources */,
+				8D0ECE451C522B2400508B75 /* tile_floor.png in Resources */,
 				8D074A241C1D3FDF00180523 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
