@@ -26,13 +26,14 @@ IRenderingEngine * CreateRenderer2()
 struct Vertex{
     float Position[2];
     float Color[4];
+    float TextureCoord[2];
 };
 const Vertex Verteces[] =
 {
-    {{100,0},    {1,0,0,1}},
-    {{100,80},   {0,1,0,1}},
-    {{-100,80},    {0,0,1,1}},
-    {{-100,0},   {0,0,0,1}},
+    {{100,0},    {1,0,0,1},     {1,0}},
+    {{100,80},   {0,1,0,1},     {1,1}},
+    {{-100,80},    {0,0,1,1},   {0,1}},
+    {{-100,0},   {0,0,0,1},     {0,0}},
 };
 const GLubyte Indices[] =
 {
@@ -88,6 +89,32 @@ void RenderingEngine2::initialize(int width, int height)
     glGenBuffers(1, &m_indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+    
+    glGenTextures(1, &m_floorTexture);
+    glBindTexture(GL_TEXTURE_2D, m_floorTexture);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    IResourceManager * resourceManager = CreateResourceManager();
+    resourceManager->loadPngImage("tile_floor");
+    void * pixels = resourceManager->getImageData();
+    ivec2 size = resourceManager->getImageSize();
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    resourceManager->unloadImage();
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
+    glGenTextures(1, &m_fishTexture);
+    glBindTexture(GL_TEXTURE_2D, m_fishTexture);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    resourceManager->loadPngImage("item_powerup_fish");
+    pixels = resourceManager->getImageData();
+    size = resourceManager->getImageSize();
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+    resourceManager->unloadImage();
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
     
     glViewport(0, 0, width, height);
     

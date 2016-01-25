@@ -32,6 +32,8 @@ private:
     GLuint  m_simpleProgram;
     GLuint  m_vertexBuffer;
     GLuint  m_indexBuffer;
+    GLuint  m_floorTexture;
+    GLuint  m_fishTexture;
     //
     //    SocketClient * clientSocket;
     //    SocketServer * serverSocket;
