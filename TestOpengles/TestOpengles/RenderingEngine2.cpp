@@ -19,9 +19,10 @@
 //#include "SocketClient.hpp"
 //#include "SocketServer.hpp"
 
-IRenderingEngine * CreateRenderer2()
+
+IRenderingEngine * CreateRenderer2(IResourceManager * resourceManager)
 {
-    return new RenderingEngine2();
+    return new RenderingEngine2(resourceManager);
 }
 struct Vertex{
     float Position[2];
@@ -42,10 +43,12 @@ const GLubyte Indices[] =
 };
 
 
-RenderingEngine2::RenderingEngine2()
+RenderingEngine2::RenderingEngine2(IResourceManager * resourceManager)
 {
 //    m_renderBuffer;
 //    m_frameBuffer;
+    m_resourceManager = resourceManager;
+    
     glGenRenderbuffers(1, &m_renderBuffer);
     if (m_renderBuffer == GL_FALSE)
     {
@@ -95,25 +98,26 @@ void RenderingEngine2::initialize(int width, int height)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    IResourceManager * resourceManager = CreateResourceManager();
-    resourceManager->loadPngImage("tile_floor");
-    void * pixels = resourceManager->getImageData();
-    ivec2 size = resourceManager->getImageSize();
+//    IResourceManager * resourceManager = CreateResourceManager();
+    m_resourceManager->loadPngImage("tile_floor");
+    void * pixels = m_resourceManager->getImageData();
+    ivec2 size = m_resourceManager->getImageSize();
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-    resourceManager->unloadImage();
+    m_resourceManager->unloadImage();
     glGenerateMipmap(GL_TEXTURE_2D);
     
-    glGenTextures(1, &m_fishTexture);
-    glBindTexture(GL_TEXTURE_2D, m_fishTexture);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    glGenTextures(1, &m_fishTexture);
+//    glBindTexture(GL_TEXTURE_2D, m_fishTexture);
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+//    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    
+//    m_resourceManager->loadPngImage("item_powerup_fish");
+//    pixels = m_resourceManager->getImageData();
+//    size = m_resourceManager->getImageSize();
+//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+//    m_resourceManager->unloadImage();
+//    glGenerateMipmap(GL_TEXTURE_2D);
     
-    resourceManager->loadPngImage("item_powerup_fish");
-    pixels = resourceManager->getImageData();
-    size = resourceManager->getImageSize();
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-    resourceManager->unloadImage();
-    glGenerateMipmap(GL_TEXTURE_2D);
     
     
     glViewport(0, 0, width, height);
@@ -124,6 +128,10 @@ void RenderingEngine2::initialize(int width, int height)
     glUseProgram(m_simpleProgram);
     
     playOrtho(width, height);
+    
+    glActiveTexture(GL_TEXTURE0);
+    GLint sampler = glGetUniformLocation(m_simpleProgram, "Sampler");
+    glUniform1f(sampler, 0);
     
 }
 void RenderingEngine2::render()const
@@ -138,9 +146,11 @@ void RenderingEngine2::render()const
     
     GLuint position = glGetAttribLocation(m_simpleProgram, "Position");
     GLuint color = glGetAttribLocation(m_simpleProgram, "SourceColor");
+    GLuint coord = glGetAttribLocation(m_simpleProgram, "TextureCoord");
     
     glEnableVertexAttribArray(position);
     glEnableVertexAttribArray(color);
+    glEnableVertexAttribArray(coord);
     
     GLsizei stride = sizeof(Vertex);
 //    const GLvoid * pCoords = &Verteces[0].Position[0];
@@ -149,15 +159,18 @@ void RenderingEngine2::render()const
 //    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
     glVertexAttribPointer(position, 2, GL_FLOAT, GL_FALSE, stride, 0);
     glVertexAttribPointer(color, 4, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(sizeof(float) * 2));
+    glVertexAttribPointer(coord, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(sizeof(float) * 6));
     
     GLsizei vertexCount = sizeof(Indices)/sizeof(Indices[0]);
     
 //    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
 //    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBuffer);
+    glBindTexture(GL_TEXTURE_2D, m_floorTexture);
     glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_BYTE, 0);
     
     glDisableVertexAttribArray(position);
     glDisableVertexAttribArray(color);
+    glDisableVertexAttribArray(coord);
     
 }
 void RenderingEngine2::updateAnimation(float timeStep)

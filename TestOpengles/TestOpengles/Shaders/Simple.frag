@@ -1,7 +1,7 @@
 const char * SimpleFragmentShader = STRINGIFY
 (
  varying lowp vec4 DestinationColor;
- varying vec2 TextureCoordOut;
+ varying mediump vec2 TextureCoordOut;
  
  uniform sampler2D Sampler;
  

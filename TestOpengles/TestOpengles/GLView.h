@@ -18,7 +18,7 @@
     EAGLContext * m_context;
     float   m_timeStamp;
     IRenderingEngine * renderingEngine;
-    
+    IResourceManager * resourceManager;
 }
 - (void) drawView:(CADisplayLink *) displayLink;
 

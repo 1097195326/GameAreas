@@ -16,7 +16,7 @@
 class RenderingEngine2 : public IRenderingEngine
 {
 public:
-    RenderingEngine2();
+    RenderingEngine2(IResourceManager * resourceManager);
     void    initialize(int width, int height);
     void    render() const;
     void    updateAnimation(float timeStep);
@@ -34,6 +34,8 @@ private:
     GLuint  m_indexBuffer;
     GLuint  m_floorTexture;
     GLuint  m_fishTexture;
+    
+    IResourceManager * m_resourceManager;
     //
     //    SocketClient * clientSocket;
     //    SocketServer * serverSocket;

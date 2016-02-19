@@ -10,6 +10,7 @@
 		8D074A241C1D3FDF00180523 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D074A231C1D3FDF00180523 /* Default-568h@2x.png */; };
 		8D0ECE441C522B2400508B75 /* item_powerup_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D0ECE421C522B2400508B75 /* item_powerup_fish.png */; };
 		8D0ECE451C522B2400508B75 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D0ECE431C522B2400508B75 /* tile_floor.png */; };
+		8D20CFD51C7725E0001C42E0 /* ResourceManagerTwo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D20CFD31C7725E0001C42E0 /* ResourceManagerTwo.mm */; };
 		8D4ED7EC1C05B545000F4251 /* Simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7EB1C05B545000F4251 /* Simple.frag */; };
 		8D4ED7EE1C05B559000F4251 /* Simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 8D4ED7ED1C05B559000F4251 /* Simple.vert */; };
 		8D548C4F1BFC665F004FF1CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */; };
@@ -20,7 +21,6 @@
 		8D58E8901C0D795E001B3111 /* SocketServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D58E88E1C0D795E001B3111 /* SocketServer.cpp */; };
 		8D58E8931C0D797B001B3111 /* SocketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D58E8911C0D797B001B3111 /* SocketClient.cpp */; };
 		8D59C1861BFDB21B004FC7B2 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D59C1851BFDB21B004FC7B2 /* GLView.mm */; };
-		8D5D1A571C2291FF003A77E4 /* ResourceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D1A551C2291FF003A77E4 /* ResourceManager.mm */; };
 		8D5D1A591C229E08003A77E4 /* Grid16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D5D1A581C229E08003A77E4 /* Grid16.png */; };
 		D8290D281BF22A8E00CAF9C0 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8290D271BF22A8E00CAF9C0 /* main.mm */; };
 		D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D8290D2A1BF22A8E00CAF9C0 /* AppDelegate.mm */; };
@@ -33,6 +33,8 @@
 		8D074A251C1D419B00180523 /* RenderingEngine2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderingEngine2.h; sourceTree = "<group>"; };
 		8D0ECE421C522B2400508B75 /* item_powerup_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item_powerup_fish.png; sourceTree = "<group>"; };
 		8D0ECE431C522B2400508B75 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
+		8D20CFD31C7725E0001C42E0 /* ResourceManagerTwo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManagerTwo.mm; sourceTree = "<group>"; };
+		8D20CFD41C7725E0001C42E0 /* ResourceManagerTwo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourceManagerTwo.hpp; sourceTree = "<group>"; };
 		8D4ED7EB1C05B545000F4251 /* Simple.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.frag; path = TestOpengles/Shaders/Simple.frag; sourceTree = "<group>"; };
 		8D4ED7ED1C05B559000F4251 /* Simple.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Simple.vert; path = TestOpengles/Shaders/Simple.vert; sourceTree = "<group>"; };
 		8D548C4E1BFC665F004FF1CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -48,8 +50,6 @@
 		8D59C1851BFDB21B004FC7B2 /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLView.mm; sourceTree = "<group>"; };
 		8D5D1A531C229104003A77E4 /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
 		8D5D1A541C229104003A77E4 /* Vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
-		8D5D1A551C2291FF003A77E4 /* ResourceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManager.mm; sourceTree = "<group>"; };
-		8D5D1A561C2291FF003A77E4 /* ResourceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourceManager.hpp; sourceTree = "<group>"; };
 		8D5D1A581C229E08003A77E4 /* Grid16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid16.png; sourceTree = "<group>"; };
 		D8290D231BF22A8E00CAF9C0 /* TestOpengles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOpengles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8290D271BF22A8E00CAF9C0 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				8D5D1A521C2290DA003A77E4 /* commal */,
 				8D074A2A1C1D84E600180523 /* socket */,
 				D844A9681BFE027800696565 /* IRenderingEngine.h */,
-				8D5D1A551C2291FF003A77E4 /* ResourceManager.mm */,
-				8D5D1A561C2291FF003A77E4 /* ResourceManager.hpp */,
+				8D20CFD31C7725E0001C42E0 /* ResourceManagerTwo.mm */,
+				8D20CFD41C7725E0001C42E0 /* ResourceManagerTwo.hpp */,
 				8D074A251C1D419B00180523 /* RenderingEngine2.h */,
 				D844A9691BFE045A00696565 /* RenderingEngine2.cpp */,
 				D8290D291BF22A8E00CAF9C0 /* AppDelegate.h */,
@@ -257,11 +257,11 @@
 				D8290D2E1BF22A8E00CAF9C0 /* ViewController.m in Sources */,
 				8D59C1861BFDB21B004FC7B2 /* GLView.mm in Sources */,
 				D8290D2B1BF22A8E00CAF9C0 /* AppDelegate.mm in Sources */,
+				8D20CFD51C7725E0001C42E0 /* ResourceManagerTwo.mm in Sources */,
 				D8290D281BF22A8E00CAF9C0 /* main.mm in Sources */,
 				D844A96A1BFE045A00696565 /* RenderingEngine2.cpp in Sources */,
 				8D58E8931C0D797B001B3111 /* SocketClient.cpp in Sources */,
 				8D58E8901C0D795E001B3111 /* SocketServer.cpp in Sources */,
-				8D5D1A571C2291FF003A77E4 /* ResourceManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

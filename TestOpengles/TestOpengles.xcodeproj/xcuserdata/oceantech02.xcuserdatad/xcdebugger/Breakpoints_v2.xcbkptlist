@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "RenderingEngine2::buildShader(const char *source, GLenum type)"
+            landmarkName = "RenderingEngine2::render()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

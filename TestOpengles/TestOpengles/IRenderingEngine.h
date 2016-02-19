@@ -17,8 +17,7 @@
 using std::string;
 using std::vector;
 
-struct IRenderingEngine * CreateRenderer2();
-struct IResourceManager * CreateResourceManager();
+
 
 struct IRenderingEngine
 {
@@ -36,5 +35,13 @@ struct IResourceManager
     virtual void unloadImage() = 0;
     virtual ~IResourceManager(){}
 };
+
+
+IRenderingEngine * CreateRenderer2(IResourceManager * resourceManager);
+namespace drawl {
+    IResourceManager * CreateResourceManager();
+}
+
+
 
 #endif /* IRenderingEngine_h */

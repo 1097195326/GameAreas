@@ -8,6 +8,7 @@
 
 #import "GLView.h"
 #include "RenderingEngine2.h"
+#include "ResourceManagerTwo.hpp"
 #include <OpenGLES/ES3/glext.h>
 
 
@@ -46,8 +47,8 @@
         {
             return nil;
         }
-        
-        renderingEngine = CreateRenderer2();
+        resourceManager = drawl::CreateResourceManager();
+        renderingEngine = CreateRenderer2(resourceManager);
 
         [m_context renderbufferStorage:GL_RENDERBUFFER
                           fromDrawable:eaglLayer];
